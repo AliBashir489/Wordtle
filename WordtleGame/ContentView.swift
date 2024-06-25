@@ -1,21 +1,32 @@
-//
-//  ContentView.swift
-//  WordtleGame
-//
-//  Created by Ali Bashir on 6/25/24.
-//
+
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            VStack {
+                Spacer()
+                Text("WORDTLE")
+                    .padding()
+                    .bold()
+                    .font(.system(size: 50, weight: .heavy, design: .default))
+                    .foregroundColor(.blue)
+                
+                Spacer()
+                NavigationLink(destination: GameView()) {
+                    Text("Start Game")
+                        .font(.title)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(15)
+                }
+                
+                Spacer()
+            }
+            
         }
-        .padding()
     }
 }
 

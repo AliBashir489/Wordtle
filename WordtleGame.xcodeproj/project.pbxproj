@@ -14,6 +14,7 @@
 		75F3CDC22C2B0942000F3081 /* WordtleGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDC12C2B0942000F3081 /* WordtleGameTests.swift */; };
 		75F3CDCC2C2B0942000F3081 /* WordtleGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDCB2C2B0942000F3081 /* WordtleGameUITests.swift */; };
 		75F3CDCE2C2B0942000F3081 /* WordtleGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDCD2C2B0942000F3081 /* WordtleGameUITestsLaunchTests.swift */; };
+		75F3CDDB2C2B0995000F3081 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDDA2C2B0995000F3081 /* GameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		75F3CDC72C2B0942000F3081 /* WordtleGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WordtleGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F3CDCB2C2B0942000F3081 /* WordtleGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordtleGameUITests.swift; sourceTree = "<group>"; };
 		75F3CDCD2C2B0942000F3081 /* WordtleGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordtleGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		75F3CDDA2C2B0995000F3081 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				75F3CDB22C2B0940000F3081 /* ContentView.swift */,
 				75F3CDB42C2B0941000F3081 /* Assets.xcassets */,
 				75F3CDB62C2B0941000F3081 /* Preview Content */,
+				75F3CDDA2C2B0995000F3081 /* GameView.swift */,
 			);
 			path = WordtleGame;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75F3CDB32C2B0940000F3081 /* ContentView.swift in Sources */,
+				75F3CDDB2C2B0995000F3081 /* GameView.swift in Sources */,
 				75F3CDB12C2B0940000F3081 /* WordtleGameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
