@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		75C4C8672C2B6A0900A1A2FD /* Words.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75C4C8662C2B6A0900A1A2FD /* Words.swift */; };
 		75F3CDB12C2B0940000F3081 /* WordtleGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDB02C2B0940000F3081 /* WordtleGameApp.swift */; };
 		75F3CDB32C2B0940000F3081 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDB22C2B0940000F3081 /* ContentView.swift */; };
 		75F3CDB52C2B0941000F3081 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75F3CDB42C2B0941000F3081 /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		75C4C8662C2B6A0900A1A2FD /* Words.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Words.swift; sourceTree = "<group>"; };
 		75F3CDAD2C2B0940000F3081 /* WordtleGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordtleGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75F3CDB02C2B0940000F3081 /* WordtleGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordtleGameApp.swift; sourceTree = "<group>"; };
 		75F3CDB22C2B0940000F3081 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				75F3CDB42C2B0941000F3081 /* Assets.xcassets */,
 				75F3CDB62C2B0941000F3081 /* Preview Content */,
 				75F3CDDA2C2B0995000F3081 /* GameView.swift */,
+				75C4C8662C2B6A0900A1A2FD /* Words.swift */,
 			);
 			path = WordtleGame;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75F3CDB32C2B0940000F3081 /* ContentView.swift in Sources */,
+				75C4C8672C2B6A0900A1A2FD /* Words.swift in Sources */,
 				75F3CDDB2C2B0995000F3081 /* GameView.swift in Sources */,
 				75F3CDB12C2B0940000F3081 /* WordtleGameApp.swift in Sources */,
 			);
