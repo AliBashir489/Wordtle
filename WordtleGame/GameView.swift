@@ -11,6 +11,7 @@ struct GameView: View {
     @State private var currentRow = 0
     @State private var currentColumn = 0
     @State private var wordToGuess = fiveLetterWords.randomElement()!
+    @State private var winOrLose = 0
     
     var body: some View {
         ZStack {
@@ -22,8 +23,8 @@ struct GameView: View {
                 .rotationEffect(.degrees(90))
                 .opacity(0.925)
             VStack {
-                Spacer()
-                Text("Guess the 5 Letter Word")
+
+                Text(winOrLose == 0 ? "Guess the 5 Letter Word" : winOrLose == 1 ? "You Won" : "You Lost")
                     .textCase(.uppercase)
                     .padding()
                     .bold()
@@ -123,6 +124,13 @@ struct GameView: View {
                     
                     
                 }
+                if gridColors[currentRow].allSatisfy({$0 == Color.green}) {
+                    winOrLose = 1
+                    currentRow = 6 // to end gaem and start new round
+                }
+                if currentRow == 5 && !gridColors[5].allSatisfy({$0 == Color.green}) {
+                    winOrLose = 2
+                }
                 currentColumn = 0
                 currentRow += 1
             }
@@ -144,6 +152,7 @@ struct GameView: View {
         currentRow = 0
         currentColumn = 0
         wordToGuess = fiveLetterWords.randomElement()!
+        winOrLose = 0
     }
     
 }
