@@ -3,42 +3,37 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationStack {
-            ZStack{
+            ZStack {
                 // Background image
-                Image("1")
+                Image("ocean_cloud")
                     .resizable()
                     .scaledToFill()
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                    .clipped()
+                    .alignmentGuide(.leading) { _ in 0 }  // Align to show the left side of the image
                     .edgesIgnoringSafeArea(.all)
-                    .rotationEffect(.degrees(90))
                     .opacity(0.925)
                 
-                VStack {
-                    Spacer()
-                    Text("Wordtle")
-                        .padding()
-                        .bold()
-                        .font(.custom("Courier", size: 50))
+                VStack(spacing: 40) {
+                    Text("Wordtle 🐢")
+                        .font(.custom("Futura", size: 50))
                         .fontWeight(.heavy)
-                        .foregroundColor(.black)
-                        .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
-                        .overlay(
-                            Rectangle()
-                                .stroke(Color.black, lineWidth: 5))
+                        .foregroundColor(.white)
+                        .shadow(color: .black, radius: 10, x: 0, y: 5)
                     
-                    
-                    Spacer()
                     NavigationLink(destination: GameView()) {
                         Text("Start Game")
-                            .font(.title)
+                            .font(.custom("Helvetica Neue", size: 20))
+                            .fontWeight(.bold)
                             .padding()
+                            .frame(width: 200, height: 50)
                             .background(Color.blue)
                             .foregroundColor(.white)
-                            .cornerRadius(20)
+                            .cornerRadius(10)
+                            .shadow(radius: 10)
                     }
-                    
-                    Spacer()
                 }
-                
+                .padding()
             }
         }
     }
