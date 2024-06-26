@@ -9,10 +9,11 @@ import Foundation
 
 
 let fiveLetterWords = [
-    "APPLE", "TABLE", "PHONE", "HOUSE", "WATER",
-    "GREEN", "CHAIR", "PLANT", "SMILE", "BEACH",
-    "DREAM", "PIZZA", "STONE", "BREAD", "TIGER",
-    "RIVER", "SHOES", "HEART", "HONEY", "MUSIC",
-    "LEMON", "SOCKS", "PAPER", "RULER", "CANDY",
-    "PEACH", "CLOWN", "CLOUD", "SOCKS", "CHAIR"
-]
+    "APPLE"]
+
+//"TABLE", "PHONE", "HOUSE", "WATER",
+//"GREEN", "CHAIR", "PLANT", "SMILE", "BEACH",
+//"DREAM", "PIZZA", "STONE", "BREAD", "TIGER",
+//"RIVER", "SHOES", "HEART", "HONEY", "MUSIC",
+//"LEMON", "SOCKS", "PAPER", "RULER", "CANDY",
+//"PEACH", "CLOWN", "CLOUD", "SOCKS", "CHAIR"
