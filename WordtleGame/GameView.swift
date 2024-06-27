@@ -23,6 +23,7 @@ struct GameView: View {
                 .opacity(0.925)
             
             VStack {
+                Spacer() //so that title doesnt show behind camera hole
                 Text("Wordtle 🐢")
                     .textCase(.uppercase)
                     .padding()
