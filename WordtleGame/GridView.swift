@@ -19,6 +19,7 @@ struct GridView: View {
                             .font(.title)
                             .bold()
                             .multilineTextAlignment(.center)
+                        
                     }
                 }
             }

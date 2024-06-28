@@ -7,7 +7,7 @@ struct GameView: View {
     @State private var keyColors: [Character: Color] = [:]
     @State private var currentRow = 0
     @State private var currentColumn = 0
-    @State private var wordToGuess = fiveLetterWords.randomElement()!
+    @State private var wordToGuess = ""
     @State private var winOrLose = 0
     
     var body: some View {
@@ -23,6 +23,7 @@ struct GameView: View {
                 .opacity(0.925)
             
             VStack {
+                Spacer()
                 Text("Wordtle 🐢")
                     .textCase(.uppercase)
                     .padding()
@@ -42,16 +43,17 @@ struct GameView: View {
                 
                 Spacer()
             }
+            .onAppear {wordToGuess = fiveLetterWords.randomElement()!}
             
             if winOrLose != 0 {
                 EndGamePopup(winOrLose: winOrLose, wordToGuess: wordToGuess, resetState: resetState)
-                    .transition(.opacity)  // Add transition for smooth appearance
-                    .animation(.easeInOut)  // Animate the transition
+                    
             }
         }
         .padding()
         .navigationTitle(" ")
     }
+        
     
     private func handleKeyPress(key: String) {
         if key == "Enter" {
@@ -68,7 +70,7 @@ struct GameView: View {
                     } else {
                         gridColors[currentRow][index] = Color.gray
                         if keyColors[Character(letter)] != Color.green && keyColors[Character(letter)] != Color.yellow {
-                            keyColors[Character(letter)] = Color.gray
+                            keyColors[Character(letter)] = Color.black
                         }
                     }
                 }
