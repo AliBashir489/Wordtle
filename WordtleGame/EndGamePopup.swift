@@ -30,6 +30,8 @@ struct EndGamePopup: View {
         .frame(maxWidth: 300)  // Adjust the width of the popup box
         .padding()
         .background(Color.clear)  // Ensure the background is clear
+        .offset(x: 0, y: -100)
+        
     }
 }
 
