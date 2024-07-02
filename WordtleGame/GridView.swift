@@ -3,17 +3,19 @@ import SwiftUI
 struct GridView: View {
     @Binding var grid: [[String]]
     @Binding var gridColors: [[Color]]
+    @Binding var numCols: Int
+    @Binding var numRows: Int
     
     var body: some View {
-        VStack(spacing: 15) {
-            ForEach(0..<6, id: \.self) { row in
-                HStack(spacing: 10) {
-                    ForEach(0..<5, id: \.self) { column in
+        VStack(spacing: CGFloat(15 - numCols)) {
+            ForEach(0..<numRows, id: \.self) { row in
+                HStack(spacing: CGFloat(15 - numCols) ) {
+                    ForEach(0..<numCols, id: \.self) { column in
                         Text(grid[row][column])
-                            .frame(width: 45, height: 45)
+                            .frame(width: CGFloat(45 - numCols), height: CGFloat(45 - numRows))
                             .background(
-                                RoundedRectangle(cornerRadius: 5)
-                                    .stroke(Color.black, lineWidth: 3)
+                                RoundedRectangle(cornerRadius: 6)
+                                    .stroke(Color.black, lineWidth: 1)
                                     .background(gridColors[row][column])
                             )
                             .font(.title)
@@ -28,5 +30,9 @@ struct GridView: View {
 }
 
 #Preview {
-    GridView(grid: .constant(Array(repeating: Array(repeating: "", count: 5), count: 6)), gridColors: .constant(Array(repeating: Array(repeating: Color.gray, count: 5), count: 6)))
+    GridView( grid: .constant(Array(repeating: Array(repeating: "", count: 8), count: 9))
+             ,gridColors: .constant(Array(repeating: Array(repeating: Color.gray, count: 8), count: 9))
+             ,numCols: .constant(8)
+             ,numRows: .constant(9)
+    )
 }

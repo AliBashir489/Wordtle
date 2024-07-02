@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct GameView: View {
-    @State private var grid: [[String]] = Array(repeating: Array(repeating: "", count: 5), count: 6)
-    @State private var gridColors: [[Color]] = Array(repeating: Array(repeating: Color.gray, count: 5), count: 6)
+    @State private var numCols = 5
+    @State private var numRows = 6
+    @State private var grid: [[String]] = Array(repeating: Array(repeating: "", count: 8), count: 9)
+    @State private var gridColors: [[Color]] = Array(repeating: Array(repeating: Color.gray, count: 8), count: 9)
     @State private var keyboardKeys: [String] = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"]
     @State private var keyColors: [Character: Color] = [:]
     @State private var currentRow = 0
@@ -10,7 +12,13 @@ struct GameView: View {
     @State private var wordToGuess = ""
     @State private var winOrLose = 0
     
+    init() { // initialize numCols and numRows according to word length
+        _numCols = State(initialValue: wordToGuess.count )
+        _numRows = State(initialValue: wordToGuess.count + 1 )
+    }
+    
     var body: some View {
+      
         ZStack {
             // Background image
             Image("ocean_cloud")
@@ -23,7 +31,9 @@ struct GameView: View {
                 .opacity(0.925)
             
             VStack {
+
                 Spacer()
+
                 Text("Wordtle 🐢")
                     .textCase(.uppercase)
                     .padding()
@@ -34,7 +44,7 @@ struct GameView: View {
                 
                 Spacer()
                 
-                GridView(grid: $grid, gridColors: $gridColors)
+                GridView(grid: $grid, gridColors: $gridColors, numCols: $numCols, numRows: $numRows)
                     .padding(.bottom, 20)
                 
                 Spacer()
@@ -57,26 +67,31 @@ struct GameView: View {
     
     private func handleKeyPress(key: String) {
         if key == "Enter" {
-            if currentColumn == 5 {
-                for (index, letter) in grid[currentRow].enumerated() {
-                    if Array(wordToGuess)[index] == Character(letter) {
-                        gridColors[currentRow][index] = Color.green
-                        keyColors[Character(letter)] = Color.green
-                    } else if wordToGuess.contains(letter) {
-                        gridColors[currentRow][index] = Color.yellow
-                        if keyColors[Character(letter)] != Color.green {
-                            keyColors[Character(letter)] = Color.yellow
-                        }
-                    } else {
-                        gridColors[currentRow][index] = Color.gray
-                        if keyColors[Character(letter)] != Color.green && keyColors[Character(letter)] != Color.yellow {
-                            keyColors[Character(letter)] = Color.black
+
+            if currentColumn == numCols { //validate that numCols have been filled
+                for (index, letter) in grid[currentRow].enumerated(){
+                    if index<numCols { //to avoid array overflow on words less than 8
+                        if  Array(wordToGuess)[index] == Character(letter) {
+                            gridColors[currentRow][index] = Color.green
+                            keyColors[Character(letter)] = Color.green
+                        } else if wordToGuess.contains(letter) {                        gridColors[currentRow][index] = Color.yellow
+                            if keyColors[Character(letter)] != Color.green {
+                                keyColors[Character(letter)] = Color.yellow
+                            }
+                        } else {
+                            gridColors[currentRow][index] = Color.gray
+                            if keyColors[Character(letter)] != Color.green && keyColors[Character(letter)] != Color.yellow {
+                                keyColors[Character(letter)] = Color.gray
+                            }
+
                         }
                     }
                 }
-                if gridColors[currentRow].allSatisfy({ $0 == Color.green }) {
+                // temp array to validate green. only validate "numCols"
+                var arrayToCheck = Array(gridColors[currentRow][0..<numCols])
+                if arrayToCheck.allSatisfy({ $0 == Color.green }) {
                     winOrLose = 1
-                } else if currentRow == 5 {
+                } else if currentRow == numCols {
                     winOrLose = 2
                 } else {
                     currentColumn = 0
@@ -88,24 +103,27 @@ struct GameView: View {
                 currentColumn -= 1
                 grid[currentRow][currentColumn] = ""
             }
-        } else if currentRow < 6 && currentColumn < 5 {
+        } else if currentRow < numRows && currentColumn < numCols {
             grid[currentRow][currentColumn] = key
             currentColumn += 1
         }
         
-        if currentRow >= 6 {
+        if currentRow >= numRows {
             resetState()
         }
     }
     
     func resetState() {
-        grid = Array(repeating: Array(repeating: "", count: 5), count: 6)
-        gridColors = Array(repeating: Array(repeating: Color.gray, count: 5), count: 6)
+        grid = Array(repeating: Array(repeating: "", count: 8), count: 9)
+        gridColors = Array(repeating: Array(repeating: Color.gray, count: 8), count: 9)
         keyboardKeys = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"]
         keyColors = [:]
         currentRow = 0
         currentColumn = 0
         wordToGuess = fiveLetterWords.randomElement()!
+        numCols = wordToGuess.count
+        numRows = wordToGuess.count + 1
+
         winOrLose = 0
     }
 }
