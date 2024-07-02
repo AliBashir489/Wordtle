@@ -58,6 +58,7 @@ struct GameView: View {
                 
                 Spacer()
             }
+            .onAppear {(words[lengthOfWord - 4].randomElement()!).uppercased()}
             
             if winOrLose != 0 {
                 EndGamePopup(winOrLose: winOrLose, wordToGuess: wordToGuess, resetState: resetState)
@@ -84,7 +85,7 @@ struct GameView: View {
                         } else {
                             gridColors[currentRow][index] = Color.gray
                             if keyColors[Character(letter)] != Color.green && keyColors[Character(letter)] != Color.yellow {
-                                keyColors[Character(letter)] = Color.gray
+                                keyColors[Character(letter)] = Color.black
                             }
                         }
                     }
