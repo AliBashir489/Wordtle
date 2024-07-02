@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var lengthOfWord: Int = 6
     var body: some View {
         NavigationStack {
             ZStack {
@@ -21,7 +22,33 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .shadow(color: .black, radius: 10, x: 0, y: 5)
                     
-                    NavigationLink(destination: GameView()) {
+                    VStack(spacing: 10) {
+                        
+                        Text("Level")
+                            .font(.custom("Futura",size: 30))
+                            .shadow(color: .black, radius: 7)
+                            .bold()
+                            .foregroundColor(.white)
+                        
+                        
+                        Picker("Length of Word:", selection: $lengthOfWord){
+                            ForEach(4..<9) { number in
+                                Text("\(number)").tag(number)
+                                    .font(.custom("Futura", size: 23))
+                                    .foregroundColor(.blue)
+                                    .bold()
+                            }
+                        }
+                        .pickerStyle(WheelPickerStyle())
+                        .frame(width: 55, height:120)
+                        .clipped()
+                        .background(Color.white.opacity(0.8))
+                        .shadow(radius: 30)
+                        .cornerRadius(10)
+                    }
+                    
+                    
+                    NavigationLink(destination: GameView(lengthOfWord: lengthOfWord)) {
                         Text("Start Game")
                             .font(.custom("Helvetica Neue", size: 20))
                             .fontWeight(.bold)
@@ -38,6 +65,7 @@ struct ContentView: View {
         }
     }
 }
+
 
 #Preview {
     ContentView()
