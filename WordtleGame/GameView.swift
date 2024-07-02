@@ -40,10 +40,11 @@ struct GameView: View {
                 Text("Wordtle 🐢")
                     .textCase(.uppercase)
                     .padding()
-                    .font(.custom("Helvetica Neue", size: 30))
+                    .font(.custom("Futura", size: 30))
                     .fontWeight(.bold)
                     .foregroundColor(.black)
                     .multilineTextAlignment(.center)
+                    .shadow(radius: 10)
                 
                 Spacer()
                 
@@ -58,7 +59,7 @@ struct GameView: View {
                 
                 Spacer()
             }
-            .onAppear {(words[lengthOfWord - 4].randomElement()!).uppercased()}
+            .onAppear {wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()}
             
             if winOrLose != 0 {
                 EndGamePopup(winOrLose: winOrLose, wordToGuess: wordToGuess, resetState: resetState)
