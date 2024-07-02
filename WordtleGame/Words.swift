@@ -7,9 +7,8 @@
 
 import Foundation
 
-
 let fiveLetterWords = [
-    "APPLE"]
+    "BOAT", "APPLE", "PUZZLE", "THOUGHT", "ELEPHANT"]
 
 //"TABLE", "PHONE", "HOUSE", "WATER",
 //"GREEN", "CHAIR", "PLANT", "SMILE", "BEACH",
