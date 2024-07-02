@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct GameView: View {
+    @State private var lengthOfWord: Int
     @State private var numCols = 5
     @State private var numRows = 6
     @State private var grid: [[String]] = Array(repeating: Array(repeating: "", count: 8), count: 9)
@@ -9,16 +10,20 @@ struct GameView: View {
     @State private var keyColors: [Character: Color] = [:]
     @State private var currentRow = 0
     @State private var currentColumn = 0
-    @State private var wordToGuess = ""
+    @State private var wordToGuess : String
     @State private var winOrLose = 0
     
-    init() { // initialize numCols and numRows according to word length
+    
+    init(lengthOfWord: Int) { // initialize numCols and numRows according to word length
+        self.lengthOfWord = lengthOfWord
+        wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased() //this looks at the value of the level that user chose form content view and then gets a random word from the corresponding array
         _numCols = State(initialValue: wordToGuess.count )
         _numRows = State(initialValue: wordToGuess.count + 1 )
+        
     }
     
     var body: some View {
-      
+        
         ZStack {
             // Background image
             Image("ocean_cloud")
@@ -31,9 +36,7 @@ struct GameView: View {
                 .opacity(0.925)
             
             VStack {
-
-                Spacer()
-
+                Spacer() //so that title doesnt show behind camera hole
                 Text("Wordtle 🐢")
                     .textCase(.uppercase)
                     .padding()
@@ -44,6 +47,8 @@ struct GameView: View {
                 
                 Spacer()
                 
+                
+                
                 GridView(grid: $grid, gridColors: $gridColors, numCols: $numCols, numRows: $numRows)
                     .padding(.bottom, 20)
                 
@@ -53,7 +58,6 @@ struct GameView: View {
                 
                 Spacer()
             }
-            .onAppear {wordToGuess = fiveLetterWords.randomElement()!}
             
             if winOrLose != 0 {
                 EndGamePopup(winOrLose: winOrLose, wordToGuess: wordToGuess, resetState: resetState)
@@ -63,18 +67,17 @@ struct GameView: View {
         .padding()
         .navigationTitle(" ")
     }
-        
     
     private func handleKeyPress(key: String) {
         if key == "Enter" {
-
             if currentColumn == numCols { //validate that numCols have been filled
                 for (index, letter) in grid[currentRow].enumerated(){
                     if index<numCols { //to avoid array overflow on words less than 8
                         if  Array(wordToGuess)[index] == Character(letter) {
                             gridColors[currentRow][index] = Color.green
                             keyColors[Character(letter)] = Color.green
-                        } else if wordToGuess.contains(letter) {                        gridColors[currentRow][index] = Color.yellow
+                        } else if wordToGuess.contains(letter) {
+                            gridColors[currentRow][index] = Color.yellow
                             if keyColors[Character(letter)] != Color.green {
                                 keyColors[Character(letter)] = Color.yellow
                             }
@@ -83,7 +86,6 @@ struct GameView: View {
                             if keyColors[Character(letter)] != Color.green && keyColors[Character(letter)] != Color.yellow {
                                 keyColors[Character(letter)] = Color.gray
                             }
-
                         }
                     }
                 }
@@ -120,14 +122,14 @@ struct GameView: View {
         keyColors = [:]
         currentRow = 0
         currentColumn = 0
-        wordToGuess = fiveLetterWords.randomElement()!
+        wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()
         numCols = wordToGuess.count
         numRows = wordToGuess.count + 1
-
+        
         winOrLose = 0
     }
 }
 
 #Preview {
-    GameView()
+    GameView(lengthOfWord:6)
 }
