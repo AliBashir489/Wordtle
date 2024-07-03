@@ -21,8 +21,8 @@ let array_7_letters = ["sapphire", "champion", "elephant", "penguin", "monster",
 
 let array_8_letters = ["tomorrow", "calendar", "hospital", "mountain", "building", "daughter", "language",
                        "property", "friendly", "location", "original", "personal", "favorite",
-                       "resource", "industry", "campaign", "adventure", "painting", "evidence",
-                       "discovery", "medicine", "professor", "leadership", "feedback"]
+                       "resource", "industry", "campaign", "painting", "evidence",
+                       "discovery", "medicine", "leadership", "feedback"]
 
 
 let words = [array_4_letters, array_5_letters, array_6_letters, array_7_letters, array_8_letters]

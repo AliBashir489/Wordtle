@@ -16,7 +16,7 @@ struct GameView: View {
     
     init(lengthOfWord: Int) { // initialize numCols and numRows according to word length
         self.lengthOfWord = lengthOfWord
-        wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased() //this looks at the value of the level that user chose form content view and then gets a random word from the corresponding array
+        wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased() //this looks at the value of the level that user chose from content view and then gets a random word from the corresponding array
         _numCols = State(initialValue: wordToGuess.count )
         _numRows = State(initialValue: wordToGuess.count + 1 )
         
@@ -130,6 +130,8 @@ struct GameView: View {
         
         winOrLose = 0
     }
+    
+    
 }
 
 #Preview {

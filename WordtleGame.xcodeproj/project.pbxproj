@@ -16,6 +16,7 @@
 		75F3CDCC2C2B0942000F3081 /* WordtleGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDCB2C2B0942000F3081 /* WordtleGameUITests.swift */; };
 		75F3CDCE2C2B0942000F3081 /* WordtleGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDCD2C2B0942000F3081 /* WordtleGameUITestsLaunchTests.swift */; };
 		75F3CDDB2C2B0995000F3081 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDDA2C2B0995000F3081 /* GameView.swift */; };
+		A2F25A9A2C35210100BB3D6C /* ScoreboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F25A992C35210100BB3D6C /* ScoreboardView.swift */; };
 		E261EFA82C2B9E29004B5A85 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E261EFA72C2B9E29004B5A85 /* GridView.swift */; };
 		E261EFAA2C2B9E45004B5A85 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E261EFA92C2B9E45004B5A85 /* KeyboardView.swift */; };
 		E261EFAC2C2B9E5D004B5A85 /* EndGamePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = E261EFAB2C2B9E5D004B5A85 /* EndGamePopup.swift */; };
@@ -51,6 +52,7 @@
 		75F3CDCB2C2B0942000F3081 /* WordtleGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordtleGameUITests.swift; sourceTree = "<group>"; };
 		75F3CDCD2C2B0942000F3081 /* WordtleGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordtleGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		75F3CDDA2C2B0995000F3081 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		A2F25A992C35210100BB3D6C /* ScoreboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardView.swift; sourceTree = "<group>"; };
 		E261EFA72C2B9E29004B5A85 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		E261EFA92C2B9E45004B5A85 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		E261EFAB2C2B9E5D004B5A85 /* EndGamePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGamePopup.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			children = (
 				75F3CDB62C2B0941000F3081 /* Preview Content */,
 				75F3CDB02C2B0940000F3081 /* WordtleGameApp.swift */,
+				A2F25A992C35210100BB3D6C /* ScoreboardView.swift */,
 				75F3CDB22C2B0940000F3081 /* ContentView.swift */,
 				75F3CDDA2C2B0995000F3081 /* GameView.swift */,
 				75C4C8662C2B6A0900A1A2FD /* Words.swift */,
@@ -278,6 +281,7 @@
 				E261EFAA2C2B9E45004B5A85 /* KeyboardView.swift in Sources */,
 				E261EFA82C2B9E29004B5A85 /* GridView.swift in Sources */,
 				75F3CDB12C2B0940000F3081 /* WordtleGameApp.swift in Sources */,
+				A2F25A9A2C35210100BB3D6C /* ScoreboardView.swift in Sources */,
 				E261EFAC2C2B9E5D004B5A85 /* EndGamePopup.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

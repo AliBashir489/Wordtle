@@ -59,6 +59,7 @@ struct ContentView: View {
                             .cornerRadius(10)
                             .shadow(radius: 10)
                     }
+                    FullScoreboardView()
                 }
                 .padding()
             }
