@@ -54,6 +54,7 @@ struct GameView: View {
                     .padding(.bottom, 20)
                 
                 Spacer()
+                Spacer()
                 
                 KeyboardView(keyboardKeys: $keyboardKeys, keyColors: $keyColors, handleKeyPress: handleKeyPress)
                 
@@ -135,5 +136,5 @@ struct GameView: View {
 }
 
 #Preview {
-    GameView(lengthOfWord:6)
+    GameView(lengthOfWord:4)
 }
