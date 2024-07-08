@@ -1,6 +1,6 @@
 Wordtle 🐢
 
-Wordtle is a word guessing game built using SwiftUI for iOS.
+Wordtle is a word guessing game built using SwiftUI for iOS. 
 
 Description
 
@@ -9,11 +9,11 @@ Wordtle challenges players to guess a hidden word of a specified length by selec
 
 Features
 
+-User Accounts and Data (with Firebase) Creating Accounts and Logging In. 
 -Level Selection: Choose the length of the word to guess from a range of options (4 to 8 characters).
 -Gameplay Grid: Interactive grid where players input their guesses.
 -Feedback System: Colors indicate correct, incorrect, and partially correct guesses.
 -Keyboard Input: Virtual keyboard for selecting letters, including Enter and Backspace functionality.
--End Game Popup: Displays win or lose status with options to restart the game.
 
 
 Technologies Used
