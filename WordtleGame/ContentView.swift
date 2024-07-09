@@ -4,6 +4,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var lengthOfWord: Int = 6
+    @State private var numberOfTries: Int = 6
     @State private var showingSignUp = false
     @State private var loggedIn: Bool = false
     @State private var emailLoggedIn: String = ""
@@ -50,9 +51,31 @@ struct ContentView: View {
                         .background(Color.white.opacity(0.8))
                         .shadow(radius: 30)
                         .cornerRadius(10)
+
+                        Text("Tries")
+                            .font(.custom("Futura", size: 30))
+                            .shadow(color: .black, radius: 7)
+                            .bold()
+                            .foregroundColor(.white)
+                        
+                        Picker("Tries:", selection: $numberOfTries) {
+                            ForEach(3..<9) { number in
+                                Text("\(number)").tag(number)
+                                    .font(.custom("Futura", size: 23))
+                                    .foregroundColor(.blue)
+                                    .bold()
+                            }
+                        }
+                        
+                        .pickerStyle(WheelPickerStyle())
+                        .frame(width: 55, height: 120)
+                        .clipped()
+                        .background(Color.white.opacity(0.8))
+                        .shadow(radius: 30)
+                        .cornerRadius(10)
                     }
                     
-                    NavigationLink(destination: GameView(lengthOfWord: lengthOfWord)) {
+                    NavigationLink(destination: GameView(lengthOfWord: lengthOfWord, numberOfTries: numberOfTries)) {
                         Text("Start Game")
                             .font(.custom("Futura", size: 20))
                             .fontWeight(.bold)
