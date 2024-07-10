@@ -12,13 +12,14 @@ struct GameView: View {
     @State private var currentColumn = 0
     @State private var wordToGuess : String
     @State private var winOrLose = 0
+    private var numberOfTries = Int()    
     
-    
-    init(lengthOfWord: Int) { // initialize numCols and numRows according to word length
+    init(lengthOfWord: Int, numberOfTries: Int) { // initialize numCols and numRows according to word length
         self.lengthOfWord = lengthOfWord
+        self.numberOfTries = numberOfTries
         wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased() //this looks at the value of the level that user chose from content view and then gets a random word from the corresponding array
         _numCols = State(initialValue: wordToGuess.count )
-        _numRows = State(initialValue: wordToGuess.count + 1 )
+        _numRows = State(initialValue: numberOfTries )
         
     }
     
@@ -127,7 +128,7 @@ struct GameView: View {
         currentColumn = 0
         wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()
         numCols = wordToGuess.count
-        numRows = wordToGuess.count + 1
+        numRows = numberOfTries
         
         winOrLose = 0
     }
@@ -136,5 +137,5 @@ struct GameView: View {
 }
 
 #Preview {
-    GameView(lengthOfWord:4)
+    GameView(lengthOfWord:4, numberOfTries: 5)
 }
