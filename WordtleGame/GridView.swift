@@ -13,10 +13,11 @@ struct GridView: View {
                     ForEach(0..<numCols, id: \.self) { column in
                         Text(grid[row][column])
                             .frame(width: CGFloat(45 - numCols), height: CGFloat(45 - numRows))
-                            .background(
-                                RoundedRectangle(cornerRadius: 6)
-                                    .stroke(Color.black, lineWidth: 1)
-                                    .background(gridColors[row][column])
+                            .background(gridColors[row][column])
+                            .cornerRadius(10)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.blue, lineWidth: 1.5)
                             )
                             .font(.title)
                             .bold()
@@ -31,8 +32,8 @@ struct GridView: View {
 
 #Preview {
     GridView( grid: .constant(Array(repeating: Array(repeating: "", count: 8), count: 9))
-             ,gridColors: .constant(Array(repeating: Array(repeating: Color.gray, count: 8), count: 9))
-             ,numCols: .constant(8)
-             ,numRows: .constant(9)
+              ,gridColors: .constant(Array(repeating: Array(repeating: Color.white, count: 8), count: 9))
+              ,numCols: .constant(8)
+              ,numRows: .constant(9)
     )
 }

@@ -2,29 +2,41 @@ import SwiftUI
 
 struct GameView: View {
     @State private var lengthOfWord: Int
-    @State private var numCols = 5
-    @State private var numRows = 6
+    @State private var numCols = 0
+    @State private var numRows = 0
     @State private var grid: [[String]] = Array(repeating: Array(repeating: "", count: 8), count: 9)
-    @State private var gridColors: [[Color]] = Array(repeating: Array(repeating: Color.gray, count: 8), count: 9)
+    @State private var gridColors: [[Color]] = Array(repeating: Array(repeating: Color.white, count: 8), count: 9)
     @State private var keyboardKeys: [String] = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"]
     @State private var keyColors: [Character: Color] = [:]
     @State private var currentRow = 0
     @State private var currentColumn = 0
-    @State private var wordToGuess : String
+    @State private var wordToGuess: String
     @State private var winOrLose = 0
-    private var numberOfTries = Int()    
+    private var numberOfTries = Int()
+    @State private var timeRemaining = 0
+    @State private var timeOption = 0
+    @State private var timer: Timer?
+    @State private var imageOpac = 1.00
     
-    init(lengthOfWord: Int, numberOfTries: Int) { // initialize numCols and numRows according to word length
+    
+    
+    
+    init(lengthOfWord: Int, numberOfTries: Int, timeRemaining: Int) {
         self.lengthOfWord = lengthOfWord
         self.numberOfTries = numberOfTries
-        wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased() //this looks at the value of the level that user chose from content view and then gets a random word from the corresponding array
-        _numCols = State(initialValue: wordToGuess.count )
-        _numRows = State(initialValue: numberOfTries )
-        
+        self.timeRemaining = timeRemaining
+        self.timeOption = timeRemaining
+        wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()
+        _numCols = State(initialValue: wordToGuess.count)
+        _numRows = State(initialValue: numberOfTries)
     }
     
+    
+    
+    
+    
+    
     var body: some View {
-        
         ZStack {
             // Background image
             Image("ocean_cloud")
@@ -32,12 +44,17 @@ struct GameView: View {
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                 .clipped()
-                .alignmentGuide(.leading) { _ in 0 }  // Align to show the left side of the image
+                .alignmentGuide(.leading) { _ in 0 }
                 .edgesIgnoringSafeArea(.all)
-                .opacity(0.925)
+                .opacity(imageOpac)
+            
+            
+            
             
             VStack {
-                Spacer() //so that title doesnt show behind camera hole
+                Spacer()
+                Spacer()
+                Spacer()
                 Text("Wordtle 🐢")
                     .textCase(.uppercase)
                     .padding()
@@ -47,25 +64,54 @@ struct GameView: View {
                     .multilineTextAlignment(.center)
                     .shadow(radius: 10)
                 
+                Text("Hurry, Guess the word to defuse \n the atom bomb!")
+                    .textCase(.uppercase)
+                    .font(.custom("Futura", size: 14))
+                    .fontWeight(.bold)
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.center)
+                    .shadow(radius: 10)
+                
+                
+                
+                Text("Detonating in: \(timeRemaining) seconds")                    .font(.custom("Futura", size: 15))
+                    .bold()
+                    .font(.headline)
+                    .padding()
+                    .foregroundColor(.red)
+                
                 Spacer()
-                
-                
                 
                 GridView(grid: $grid, gridColors: $gridColors, numCols: $numCols, numRows: $numRows)
                     .padding(.bottom, 20)
                 
                 Spacer()
                 Spacer()
+                Spacer()
                 
                 KeyboardView(keyboardKeys: $keyboardKeys, keyColors: $keyColors, handleKeyPress: handleKeyPress)
                 
                 Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                
             }
-            .onAppear {wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()}
+            .onAppear {
+                wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()
+                startTimer()
+            }
+            .onDisappear {
+                timer?.invalidate()
+            }
+            
+            
+            
             
             if winOrLose != 0 {
                 EndGamePopup(winOrLose: winOrLose, wordToGuess: wordToGuess, resetState: resetState)
-                    
             }
         }
         .padding()
@@ -74,10 +120,10 @@ struct GameView: View {
     
     private func handleKeyPress(key: String) {
         if key == "Enter" {
-            if currentColumn == numCols { //validate that numCols have been filled
-                for (index, letter) in grid[currentRow].enumerated(){
-                    if index<numCols { //to avoid array overflow on words less than 8
-                        if  Array(wordToGuess)[index] == Character(letter) {
+            if currentColumn == numCols {
+                for (index, letter) in grid[currentRow].enumerated() {
+                    if index < numCols {
+                        if Array(wordToGuess)[index] == Character(letter) {
                             gridColors[currentRow][index] = Color.green
                             keyColors[Character(letter)] = Color.green
                         } else if wordToGuess.contains(letter) {
@@ -93,11 +139,10 @@ struct GameView: View {
                         }
                     }
                 }
-                // temp array to validate green. only validate "numCols"
-                var arrayToCheck = Array(gridColors[currentRow][0..<numCols])
+                let arrayToCheck = Array(gridColors[currentRow][0..<numCols])
                 if arrayToCheck.allSatisfy({ $0 == Color.green }) {
                     winOrLose = 1
-                } else if currentRow == numCols {
+                } else if currentRow == numRows - 1 {
                     winOrLose = 2
                 } else {
                     currentColumn = 0
@@ -119,23 +164,54 @@ struct GameView: View {
         }
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private func startTimer() {
+        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            if winOrLose == 0 {
+                if timeRemaining > 0 {
+                    timeRemaining -= 1
+                    imageOpac = imageOpac - (1.00/Double(timeOption))
+                }
+                else {
+                    timer?.invalidate()
+                    winOrLose = 2
+                }
+            }
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     func resetState() {
         grid = Array(repeating: Array(repeating: "", count: 8), count: 9)
-        gridColors = Array(repeating: Array(repeating: Color.gray, count: 8), count: 9)
+        gridColors = Array(repeating: Array(repeating: Color.white, count: 8), count: 9)
         keyboardKeys = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"]
         keyColors = [:]
         currentRow = 0
         currentColumn = 0
         wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()
-        numCols = wordToGuess.count
         numRows = numberOfTries
-        
         winOrLose = 0
+        timeRemaining = self.timeOption
+        imageOpac = 1
+        startTimer()
     }
-    
-    
 }
 
 #Preview {
-    GameView(lengthOfWord:4, numberOfTries: 5)
+    GameView(lengthOfWord: 8, numberOfTries: 8, timeRemaining: 45)
 }

@@ -7,7 +7,7 @@ struct EndGamePopup: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            Text(winOrLose == 1 ? "Congratulations! You've guessed the word: \(wordToGuess)" : "Better luck next time! The word was: \(wordToGuess)")
+            Text(winOrLose == 1 ? "Congratulations! You saved the world!: \(wordToGuess)" : "No! The world was destroyed! The word was: \(wordToGuess)")
                 .font(.custom("Helvetica Neue", size: 20))
                 .fontWeight(.bold)
                 .foregroundColor(.black)

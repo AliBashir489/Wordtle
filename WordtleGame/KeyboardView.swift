@@ -15,7 +15,7 @@ struct KeyboardView: View {
                         }) {
                             Text(key)
                                 .frame(width: 32, height: 44)
-                                .background(keyColors[Character(key)] ?? Color.gray)
+                                .background(keyColors[Character(key)] ?? Color.blue)
                                 .foregroundColor(.white)
                                 .cornerRadius(5)
                         }
