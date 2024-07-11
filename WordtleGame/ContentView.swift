@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var lengthOfWord: Int = 6
+    @State private var lengthOfWord: Int = 5
     @State private var numberOfTries: Int = 6
-    @State private var timeRemaining: Int = 30
+    @State private var timeRemaining: Int = 120
 
     @State private var showingSignUp = false
     @State private var loggedIn: Bool = false
@@ -65,7 +65,7 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                             
                             Picker("Time:", selection: $timeRemaining) {
-                                ForEach([30, 45, 60, 90, 120], id: \.self) { number in
+                                ForEach([30, 45, 60, 90, 120, 180, 300], id: \.self) { number in
                                     Text("\(number)").tag(number)
                                         .font(.custom("Futura", size: 23))
                                         .foregroundColor(.black)
@@ -90,7 +90,7 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                             
                             Picker("Tries:", selection: $numberOfTries) {
-                                ForEach(3..<9) { number in
+                                ForEach(3..<10) { number in
                                     Text("\(number)").tag(number)
                                         .font(.custom("Futura", size: 23))
                                         .foregroundColor(.black)
