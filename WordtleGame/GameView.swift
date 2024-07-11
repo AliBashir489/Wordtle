@@ -85,8 +85,8 @@ struct GameView: View {
                 GridView(grid: $grid, gridColors: $gridColors, numCols: $numCols, numRows: $numRows)
                     .padding(.bottom, 20)
                 
-                Spacer()
-                Spacer()
+                //Spacer() // too much space pushes out Enter and backspace
+                //Spacer()
                 Spacer()
                 
                 KeyboardView(keyboardKeys: $keyboardKeys, keyColors: $keyColors, handleKeyPress: handleKeyPress)
@@ -119,6 +119,9 @@ struct GameView: View {
     }
     
     private func handleKeyPress(key: String) {
+        if winOrLose>0 {
+            return
+        }
         if key == "Enter" {
             if currentColumn == numCols {
                 for (index, letter) in grid[currentRow].enumerated() {

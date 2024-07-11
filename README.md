@@ -22,9 +22,11 @@ Wordtle challenges players to guess a hidden word of a specified length by selec
 SwiftUI: Used for building the user interface components.
 State Management: Utilizes @State and @Binding for managing local state changes and data flow within views.
 Custom Views: Implements custom views like GridView for displaying the game grid and KeyboardView for interactive letter selection.
+
 Other: Github, Git, SwiftUI, Xcode, Firebase
 
 **Installation**
+
 
 Clone the repository.
 Open the project in Xcode.
