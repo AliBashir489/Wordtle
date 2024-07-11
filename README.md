@@ -21,6 +21,7 @@ Technologies Used
 SwiftUI: Used for building the user interface components.
 State Management: Utilizes @State and @Binding for managing local state changes and data flow within views.
 Custom Views: Implements custom views like GridView for displaying the game grid and KeyboardView for interactive letter selection.
+
 Installation
 
 Clone the repository.
