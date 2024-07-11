@@ -45,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7509CF3E2C39D6C4000BFC85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7509CF3E2C39D6C4000BFC85 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "WordtleGame/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		7509CF432C3A2554000BFC85 /* PassString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassString.swift; sourceTree = "<group>"; };
 		7537B1F42C39D08200763895 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		7537B1F62C39D08B00763895 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
