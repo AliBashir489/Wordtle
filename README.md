@@ -37,7 +37,14 @@ Run the project on a simulator or a physical device running iOS 14.0 or later.
 - Receive feedback on your guesses through colored indicators.
 - Win by correctly guessing the entire word or lose after multiple incorrect attempts, within the time selected.
 
-![IMG_2973](https://github.com/user-attachments/assets/be3c6fb0-214f-415c-b1a4-5ae0f5ee0c70)
-![IMG_2974](https://github.com/user-attachments/assets/cd86d9b9-976c-45ba-8dfe-412fd8f47632)
-![IMG_2975](https://github.com/user-attachments/assets/037ec6c6-dcb3-4514-9d75-b822eab0a5ad)
-![IMG_2976](https://github.com/user-attachments/assets/5e69ba34-58db-4acb-9826-4b4ffaaf69c1)
+  
+  
+ 
+   
+  
+  
+
+![IMG_2973-2](https://github.com/user-attachments/assets/00a9a8e4-cc93-4f43-86cf-ca2c67c74f5b)
+![IMG_2974-2](https://github.com/user-attachments/assets/e94e89eb-314e-40d4-abe5-6edfa2fcd6c4)
+![IMG_2975-2](https://github.com/user-attachments/assets/8c7a9aaf-8944-47d7-a138-0d1c18cc39b9)
+![IMG_2976-2](https://github.com/user-attachments/assets/d2132588-e786-4b44-8d06-a90a500a99f8)
