@@ -4,12 +4,20 @@ struct EndGamePopup: View {
     var winOrLose: Int
     var wordToGuess: String
     var resetState: () -> Void
+    @State var isAnimating: Bool = false
     
     var body: some View {
         VStack() {
             Image(systemName: winOrLose == 1 ? "medal" :"laser.burst")
-                .frame(width:140,height:140)
-                .scaleEffect(6.0)
+                .font(.system(size: 100))
+                .foregroundColor(isAnimating ? .yellow : .gray)
+                .scaleEffect(isAnimating ? 1.2 : 0.3)
+                .rotationEffect(Angle(degrees: isAnimating ? 360 : 0))
+                .onAppear {
+                    withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                        isAnimating = true
+                    }
+                }
             
             Text(winOrLose == 1 ? "Congratulations! You saved the world!\nThe correct word was:\n \(wordToGuess)" : "Oh No!\nThe world was destroyed!\nThe correct word was: \(wordToGuess)")
                 .font(.custom("Helvetica Neue", size: 20))
