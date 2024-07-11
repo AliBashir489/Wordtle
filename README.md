@@ -14,6 +14,7 @@ Wordtle challenges players to guess a hidden word of a specified length by selec
 - Gameplay Grid: Interactive grid where players input their guesses.
 - Feedback System: Colors indicate correct, incorrect, and partially correct guesses.
 - Keyboard Input: Virtual keyboard for selecting letters, including Enter and Backspace functionality.
+- User accounts and login/authentication functionality through firebase
 
 
 **Technologies Used**
@@ -21,6 +22,7 @@ Wordtle challenges players to guess a hidden word of a specified length by selec
 SwiftUI: Used for building the user interface components.
 State Management: Utilizes @State and @Binding for managing local state changes and data flow within views.
 Custom Views: Implements custom views like GridView for displaying the game grid and KeyboardView for interactive letter selection.
+Other: Github, Git, SwiftUI, Xcode, Firebase
 
 **Installation**
 
@@ -32,6 +34,7 @@ Run the project on a simulator or a physical device running iOS 14.0 or later.
 
 - Launch the app.
 - Select the desired word length, time and number of guesses in the level selection screen.
+- Create an Account thorugh firebase authentication and Log in
 - Tap "Start Game" to begin guessing the hidden word.
 - Use the virtual keyboard at the bottom to enter letters into the grid.
 - Receive feedback on your guesses through colored indicators.
