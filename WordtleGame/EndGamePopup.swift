@@ -6,8 +6,12 @@ struct EndGamePopup: View {
     var resetState: () -> Void
     
     var body: some View {
-        VStack(spacing: 20) {
-            Text(winOrLose == 1 ? "Congratulations! You saved the world!: \(wordToGuess)" : "No! The world was destroyed! The word was: \(wordToGuess)")
+        VStack() {
+            Image(systemName: winOrLose == 1 ? "medal" :"laser.burst")
+                .frame(width:140,height:140)
+                .scaleEffect(6.0)
+            
+            Text(winOrLose == 1 ? "Congratulations! You saved the world!\nThe correct word was:\n \(wordToGuess)" : "Oh No!\nThe world was destroyed!\nThe correct word was: \(wordToGuess)")
                 .font(.custom("Helvetica Neue", size: 20))
                 .fontWeight(.bold)
                 .foregroundColor(.black)
@@ -36,5 +40,5 @@ struct EndGamePopup: View {
 }
 
 #Preview {
-    EndGamePopup(winOrLose: 1, wordToGuess: "APPLE", resetState: {})
+    EndGamePopup(winOrLose: 2, wordToGuess: "APPLE", resetState: {})
 }
