@@ -4,6 +4,10 @@ struct GameView: View {
     @State private var lengthOfWord: Int
     @State private var numCols = 0
     @State private var numRows = 0
+    @State private var emailLoggedIn: String
+    @State private var nWins: Int = 0
+    @State private var nPlays: Int = 0
+    
     @State private var grid: [[String]] = Array(repeating: Array(repeating: "", count: 8), count: 9)
     @State private var gridColors: [[Color]] = Array(repeating: Array(repeating: Color.white, count: 8), count: 9)
     @State private var keyboardKeys: [String] = ["QWERTYUIOP", "ASDFGHJKL", "ZXCVBNM"]
@@ -21,9 +25,10 @@ struct GameView: View {
     
     
     
-    init(lengthOfWord: Int, numberOfTries: Int, timeRemaining: Int) {
+    init(lengthOfWord: Int, numberOfTries: Int, timeRemaining: Int, emailLoggedIn: String) {
         self.lengthOfWord = lengthOfWord
         self.numberOfTries = numberOfTries
+        self.emailLoggedIn = emailLoggedIn
         self.timeRemaining = timeRemaining
         self.timeOption = timeRemaining
         wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()
@@ -54,7 +59,7 @@ struct GameView: View {
             VStack {
                 Spacer()
                 Spacer()
-                Spacer()
+                //Spacer()
                 Text("Wordtle 🐢")
                     .textCase(.uppercase)
                     .padding()
@@ -76,8 +81,9 @@ struct GameView: View {
                 
                 Text("Detonating in: \(timeRemaining) seconds")                    .font(.custom("Futura", size: 15))
                     .bold()
+                    .textCase(/*@START_MENU_TOKEN@*/.uppercase/*@END_MENU_TOKEN@*/)
                     .font(.headline)
-                    .padding()
+                    //.padding()
                     .foregroundColor(.red)
                 
                 Spacer()
@@ -100,7 +106,7 @@ struct GameView: View {
                 
             }
             .onAppear {
-                wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()
+                wordToGuess = getRandomWord(lengthOfWord: lengthOfWord) //(words[lengthOfWord - 4].randomElement()!).uppercased()
                 startTimer()
             }
             .onDisappear {
@@ -111,7 +117,8 @@ struct GameView: View {
             
             
             if winOrLose != 0 {
-                EndGamePopup(winOrLose: winOrLose, wordToGuess: wordToGuess, resetState: resetState)
+                // adding "1" here because resetstate hasn't been called yet
+                EndGamePopup(winOrLose: winOrLose, wordToGuess: wordToGuess, resetState: resetState, lengthOfWord: lengthOfWord, nPlays: nPlays+1, nWins: (nWins + (winOrLose == 1 ? 1 : 0) ) )
             }
         }
         .padding()
@@ -161,18 +168,58 @@ struct GameView: View {
             grid[currentRow][currentColumn] = key
             currentColumn += 1
         }
-        
-        if currentRow >= numRows {
-            resetState()
-        }
+        // This is now handled by the TIMER event
+            //if currentRow >= numRows {
+            //    resetState()
+            //}
     }
     
     
-    
-    
-    
-    
-    
+    private func getOnlineRandomWord(lengthOfWord:Int)->String {
+        let wordsURL = "https://ocelot.aul.fiu.edu/~dmath031/words\(lengthOfWord).txt"
+        
+        guard let url = URL( string: wordsURL)
+        else {
+            fatalError("Error with url")
+        }
+        var myword = "-"
+        // by default, sess is stopped, must resume
+        let sess : Void = URLSession.shared.dataTask(with: url) {
+            (sessData, sessResponse, sessError) in
+            
+            if let error = sessError {
+                print(" \(error.localizedDescription) ")
+            } else { // get the response content
+                if let words = String(data: sessData!, encoding: .utf8) {
+                    let arrWords = words.split(separator: "\n")
+                    if !arrWords.isEmpty {
+                        myword = String(arrWords.randomElement()!)
+                        print("\(myword)")
+                    }
+                } //if
+            } //else error
+        }.resume() // sess, run it!
+
+        var retries=5
+        // let the task run several times until it gets somthing
+        while (myword.count < 4) && (retries > 0) {
+                sleep(1)
+                retries -= 1
+        }
+        return myword
+        } //getOnlineRandomWord
+        
+    private func getRandomWord(lengthOfWord:Int) -> String {
+        var theWord = "-"
+        if emailLoggedIn.count>5 {
+            theWord = getOnlineRandomWord(lengthOfWord: lengthOfWord)
+        }
+        if theWord.count < 4 {
+            // failsafe: if internet down or not loggedin, get word from arrays, as before
+            theWord = (words[lengthOfWord - 4].randomElement()!)
+        }
+        return theWord.uppercased()
+    }
     
     
     
@@ -182,7 +229,12 @@ struct GameView: View {
             if winOrLose == 0 {
                 if timeRemaining > 0 {
                     timeRemaining -= 1
-                    imageOpac = imageOpac - (1.00/Double(timeOption))
+                    // changed the white out to the last 20 seconds for better exploding effect
+                    let whiteoutStartsAt = 20.0 //seconds
+                    if timeRemaining < Int(whiteoutStartsAt) {
+                        imageOpac = Double(timeRemaining) * 1.0/whiteoutStartsAt
+                    }
+                    //imageOpac = imageOpac - (1.00/Double(timeOption))
                 }
                 else {
                     timer?.invalidate()
@@ -206,7 +258,11 @@ struct GameView: View {
         keyColors = [:]
         currentRow = 0
         currentColumn = 0
-        wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()
+        nPlays += 1
+        if winOrLose == 1 {
+            nWins += 1
+        }
+        wordToGuess = getRandomWord(lengthOfWord:lengthOfWord) //(words[lengthOfWord - 4].randomElement()!).uppercased()
         numRows = numberOfTries
         winOrLose = 0
         timeRemaining = self.timeOption
@@ -216,5 +272,5 @@ struct GameView: View {
 }
 
 #Preview {
-    GameView(lengthOfWord: 8, numberOfTries: 8, timeRemaining: 45)
+    GameView(lengthOfWord: 7, numberOfTries: 9, timeRemaining: 45, emailLoggedIn: "")
 }
