@@ -37,9 +37,9 @@ struct EndGamePopup: View {
                     .foregroundColor(.white)
                     .cornerRadius(20)
             }
-            Text("Word Length: \(lengthOfWord)")
-            Text("Plays: \(nPlays)")
-            Text("Wins: \(nWins)")
+            Text("Word Length: \(lengthOfWord)").foregroundColor(.black)
+            Text("Plays: \(nPlays)").foregroundColor(.black)
+            Text("Wins: \(nWins)").foregroundColor(.black)
             //stats could go here
         }
         .padding()

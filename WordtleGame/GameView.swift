@@ -105,6 +105,7 @@ struct GameView: View {
                 Spacer()
                 
             }
+
             .onAppear {
                 wordToGuess = getRandomWord(lengthOfWord: lengthOfWord) //(words[lengthOfWord - 4].randomElement()!).uppercased()
                 startTimer()

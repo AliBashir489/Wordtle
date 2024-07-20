@@ -51,6 +51,7 @@ struct LoginView: View {
                         .background(Color.white)
                         .cornerRadius(10)
                         .shadow(radius: 5)
+                        .foregroundColor(.black)
                     
                     if email.count != 0 {
                         Image(systemName: email.isValidEmail() ? "checkmark" : "xmark")
@@ -73,6 +74,7 @@ struct LoginView: View {
                         .background(Color.white)
                         .cornerRadius(10)
                         .shadow(radius: 5)
+                        .foregroundColor(.black)
                 }
                 .padding(10)
                 .background(Color.white)
