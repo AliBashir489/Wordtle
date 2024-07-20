@@ -10,31 +10,33 @@ struct GameView: View {
     @State private var keyColors: [Character: Color] = [:]
     @State private var currentRow = 0
     @State private var currentColumn = 0
-    @State private var wordToGuess: String
+    @State private var wordToGuess: String = ""
     @State private var winOrLose = 0
     private var numberOfTries = Int()
     @State private var timeRemaining = 0
     @State private var timeOption = 0
     @State private var timer: Timer?
     @State private var imageOpac = 1.00
+    @Binding var stats: winStatModel
     
     
     
-    
-    init(lengthOfWord: Int, numberOfTries: Int, timeRemaining: Int) {
+    init(lengthOfWord: Int, numberOfTries: Int, timeRemaining: Int, winStat: winStatModel) {
         self.lengthOfWord = lengthOfWord
         self.numberOfTries = numberOfTries
         self.timeRemaining = timeRemaining
         self.timeOption = timeRemaining
-        wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()
+        self.wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased()
         _numCols = State(initialValue: wordToGuess.count)
         _numRows = State(initialValue: numberOfTries)
+
+        wordToGuess = (words[lengthOfWord - 4].randomElement()!).uppercased() //this looks at the value of the level that user chose from content view and then gets a random word from the corresponding array
+        stats = winStat
+        
+        _numCols = State(initialValue: wordToGuess.count )
+        _numRows = State(initialValue: wordToGuess.count + 1 )
+    
     }
-    
-    
-    
-    
-    
     
     var body: some View {
         ZStack {
@@ -146,6 +148,23 @@ struct GameView: View {
                 if arrayToCheck.allSatisfy({ $0 == Color.green }) {
                     winOrLose = 1
                 } else if currentRow == numRows - 1 {
+                    
+                    if(stats.rowCount.endIndex == 1){
+                        stats.rowCount[0] = currentRow
+                    }else{
+                        stats.rowCount.append(currentRow)
+                    }
+                    
+                    if(stats.letterCount.endIndex == 1){
+                        stats.letterCount[0] = lengthOfWord
+                    }else{
+                        stats.letterCount.append(lengthOfWord)
+                    }
+                    
+                    stats.winCount += 1
+                    
+                    print("Wins: \(stats.winCount), Row: \(stats.rowCount), Letters: \(stats.letterCount)")
+                } else if currentRow == numCols {
                     winOrLose = 2
                 } else {
                     currentColumn = 0
@@ -216,5 +235,5 @@ struct GameView: View {
 }
 
 #Preview {
-    GameView(lengthOfWord: 8, numberOfTries: 8, timeRemaining: 45)
+    GameView(lengthOfWord: 8, numberOfTries: 8, timeRemaining: 45, winStat: winStatModel(winCount: 0, letterCount: [], rowCount: [], completionTime: 0))
 }

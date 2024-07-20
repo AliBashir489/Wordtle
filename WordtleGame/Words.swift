@@ -24,6 +24,7 @@ let array_8_letters = ["tomorrow", "calendar", "hospital", "mountain", "building
                        "resource", "industry", "campaign", "painting", "evidence", "medicine", "feedback"]
 
 
+
 let words = [array_4_letters, array_5_letters, array_6_letters, array_7_letters, array_8_letters]
 
 

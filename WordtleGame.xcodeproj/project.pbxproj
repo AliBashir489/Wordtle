@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7509CF3F2C39D6C4000BFC85 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7509CF3E2C39D6C4000BFC85 /* GoogleService-Info.plist */; };
-		7509CF422C39D717000BFC85 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 7509CF412C39D717000BFC85 /* FirebaseAuth */; };
 		7509CF442C3A2554000BFC85 /* PassString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7509CF432C3A2554000BFC85 /* PassString.swift */; };
 		7537B1F52C39D08200763895 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537B1F42C39D08200763895 /* LoginView.swift */; };
 		7537B1F72C39D08B00763895 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7537B1F62C39D08B00763895 /* SignUpView.swift */; };
@@ -21,6 +20,12 @@
 		75F3CDCC2C2B0942000F3081 /* WordtleGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDCB2C2B0942000F3081 /* WordtleGameUITests.swift */; };
 		75F3CDCE2C2B0942000F3081 /* WordtleGameUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDCD2C2B0942000F3081 /* WordtleGameUITestsLaunchTests.swift */; };
 		75F3CDDB2C2B0995000F3081 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75F3CDDA2C2B0995000F3081 /* GameView.swift */; };
+		A27744702C474248006489A9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A277446F2C474248006489A9 /* FirebaseAuth */; };
+		A27744722C474290006489A9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A27744712C474290006489A9 /* FirebaseAuth */; };
+		A27744742C4742B8006489A9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A27744732C4742B8006489A9 /* FirebaseAuth */; };
+		A27744762C4742C8006489A9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A27744752C4742C8006489A9 /* FirebaseAuth */; };
+		A27744792C4742E1006489A9 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A27744782C4742E1006489A9 /* FirebaseAuth */; };
+		A277447D2C4B6A75006489A9 /* WinModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A277447C2C4B6A75006489A9 /* WinModel.swift */; };
 		A2F25A9A2C35210100BB3D6C /* ScoreboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F25A992C35210100BB3D6C /* ScoreboardView.swift */; };
 		E261EFA82C2B9E29004B5A85 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E261EFA72C2B9E29004B5A85 /* GridView.swift */; };
 		E261EFAA2C2B9E45004B5A85 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E261EFA92C2B9E45004B5A85 /* KeyboardView.swift */; };
@@ -61,6 +66,7 @@
 		75F3CDCB2C2B0942000F3081 /* WordtleGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordtleGameUITests.swift; sourceTree = "<group>"; };
 		75F3CDCD2C2B0942000F3081 /* WordtleGameUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordtleGameUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		75F3CDDA2C2B0995000F3081 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		A277447C2C4B6A75006489A9 /* WinModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinModel.swift; sourceTree = "<group>"; };
 		A2F25A992C35210100BB3D6C /* ScoreboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardView.swift; sourceTree = "<group>"; };
 		E261EFA72C2B9E29004B5A85 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		E261EFA92C2B9E45004B5A85 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
@@ -72,7 +78,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7509CF422C39D717000BFC85 /* FirebaseAuth in Frameworks */,
+				A27744722C474290006489A9 /* FirebaseAuth in Frameworks */,
+				A27744762C4742C8006489A9 /* FirebaseAuth in Frameworks */,
+				A27744742C4742B8006489A9 /* FirebaseAuth in Frameworks */,
+				A27744792C4742E1006489A9 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A27744702C474248006489A9 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +138,7 @@
 				75F3CDB62C2B0941000F3081 /* Preview Content */,
 				75F3CDB02C2B0940000F3081 /* WordtleGameApp.swift */,
 				A2F25A992C35210100BB3D6C /* ScoreboardView.swift */,
+				A277447C2C4B6A75006489A9 /* WinModel.swift */,
 				75F3CDB22C2B0940000F3081 /* ContentView.swift */,
 				7537B1F42C39D08200763895 /* LoginView.swift */,
 				7537B1F62C39D08B00763895 /* SignUpView.swift */,
@@ -184,7 +195,10 @@
 			);
 			name = WordtleGame;
 			packageProductDependencies = (
-				7509CF412C39D717000BFC85 /* FirebaseAuth */,
+				A27744712C474290006489A9 /* FirebaseAuth */,
+				A27744732C4742B8006489A9 /* FirebaseAuth */,
+				A27744752C4742C8006489A9 /* FirebaseAuth */,
+				A27744782C4742E1006489A9 /* FirebaseAuth */,
 			);
 			productName = WordtleGame;
 			productReference = 75F3CDAD2C2B0940000F3081 /* WordtleGame.app */;
@@ -204,6 +218,9 @@
 				75F3CDBF2C2B0942000F3081 /* PBXTargetDependency */,
 			);
 			name = WordtleGameTests;
+			packageProductDependencies = (
+				A277446F2C474248006489A9 /* FirebaseAuth */,
+			);
 			productName = WordtleGameTests;
 			productReference = 75F3CDBD2C2B0942000F3081 /* WordtleGameTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -259,7 +276,7 @@
 			);
 			mainGroup = 75F3CDA42C2B0940000F3081;
 			packageReferences = (
-				7509CF402C39D717000BFC85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A27744772C4742E1006489A9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 75F3CDAE2C2B0940000F3081 /* Products */;
 			projectDirPath = "";
@@ -310,6 +327,7 @@
 				7537B1F52C39D08200763895 /* LoginView.swift in Sources */,
 				E261EFAA2C2B9E45004B5A85 /* KeyboardView.swift in Sources */,
 				E261EFA82C2B9E29004B5A85 /* GridView.swift in Sources */,
+				A277447D2C4B6A75006489A9 /* WinModel.swift in Sources */,
 				7537B1F72C39D08B00763895 /* SignUpView.swift in Sources */,
 				75F3CDB12C2B0940000F3081 /* WordtleGameApp.swift in Sources */,
 				7509CF442C3A2554000BFC85 /* PassString.swift in Sources */,
@@ -648,20 +666,36 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		7509CF402C39D717000BFC85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		A27744772C4742E1006489A9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 10.28.1;
+				minimumVersion = 10.29.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7509CF412C39D717000BFC85 /* FirebaseAuth */ = {
+		A277446F2C474248006489A9 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 7509CF402C39D717000BFC85 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		A27744712C474290006489A9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseAuth;
+		};
+		A27744732C4742B8006489A9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseAuth;
+		};
+		A27744752C4742C8006489A9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FirebaseAuth;
+		};
+		A27744782C4742E1006489A9 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A27744772C4742E1006489A9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -4,10 +4,26 @@ struct ContentView: View {
     @State private var lengthOfWord: Int = 5
     @State private var numberOfTries: Int = 6
     @State private var timeRemaining: Int = 120
-
+    
     @State private var showingSignUp = false
+    @State private var showingScoreboard = false
     @State private var loggedIn: Bool = false
     @State private var emailLoggedIn: String = ""
+    
+    @AppStorage("winStat") private var storedWinStat: Data?
+    
+    var winStat: winStatModel {
+        get {
+            if let data = storedWinStat {
+                return try! JSONDecoder().decode(winStatModel.self, from: data)
+            } else {
+                return winStatModel(winCount: 0, letterCount: [], rowCount: [], completionTime: 0)
+            }
+        }
+        set {
+            storedWinStat = try? JSONEncoder().encode(newValue)
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -108,7 +124,7 @@ struct ContentView: View {
                         Spacer()
                     }
                     
-                    NavigationLink(destination: GameView(lengthOfWord: lengthOfWord, numberOfTries: numberOfTries, timeRemaining: timeRemaining)) {
+                    NavigationLink(destination: GameView(lengthOfWord: lengthOfWord, numberOfTries: numberOfTries, timeRemaining: timeRemaining, winStat: winStat)) {
                         Text("Start Game")
                             .font(.custom("Futura", size: 20))
                             .fontWeight(.bold)
@@ -119,6 +135,7 @@ struct ContentView: View {
                             .cornerRadius(10)
                             .shadow(radius: 10)
                     }
+                    
                     
                     VStack {
                         NavigationLink(destination: LoginView(loggedIn: $loggedIn, emailLoggedIn: $emailLoggedIn)) {
@@ -158,7 +175,37 @@ struct ContentView: View {
                             .offset(CGSize(width: 0, height: 50))
                     }
                     .padding()
-                    Spacer()
+                    
+                    Button(action: {
+                        showingScoreboard.toggle()
+                    }) {
+                        
+                        VStack(){
+                            HStack{
+                                Spacer()
+                                Image(systemName: "chevron.up")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30, height: 20)
+                                    .foregroundColor(.white)
+                                
+                                Spacer()
+                            }
+                            Text("Scoreboard")
+                                .font(.custom("Futura", size: 20))
+                                .fontWeight(.bold)
+                                .padding()
+                                .frame(width: 200, height: 50)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                                .shadow(radius: 10)
+                        }
+                        
+                    }
+                    .padding(.bottom, 40)
+                    .sheet(isPresented: $showingScoreboard) {
+                        FullScoreboardView()
+                    }
                 }
             }
         }
