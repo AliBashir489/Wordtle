@@ -90,7 +90,7 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                             
                             Picker("Tries:", selection: $numberOfTries) {
-                                ForEach(3..<10) { number in
+                                ForEach(4..<10) { number in
                                     Text("\(number)").tag(number)
                                         .font(.custom("Futura", size: 23))
                                         .foregroundColor(.black)
@@ -108,7 +108,7 @@ struct ContentView: View {
                         Spacer()
                     }
                     
-                    NavigationLink(destination: GameView(lengthOfWord: lengthOfWord, numberOfTries: numberOfTries, timeRemaining: timeRemaining)) {
+                    NavigationLink(destination: GameView(lengthOfWord: lengthOfWord, numberOfTries: numberOfTries, timeRemaining: timeRemaining, emailLoggedIn: emailLoggedIn)) {
                         Text("Start Game")
                             .font(.custom("Futura", size: 20))
                             .fontWeight(.bold)

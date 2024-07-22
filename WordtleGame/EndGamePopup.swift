@@ -4,6 +4,9 @@ struct EndGamePopup: View {
     var winOrLose: Int
     var wordToGuess: String
     var resetState: () -> Void
+    var lengthOfWord: Int
+    @State var nPlays: Int
+    @State var nWins: Int
     @State var isAnimating: Bool = false
     
     var body: some View {
@@ -34,6 +37,10 @@ struct EndGamePopup: View {
                     .foregroundColor(.white)
                     .cornerRadius(20)
             }
+            Text("Word Length: \(lengthOfWord)").foregroundColor(.black)
+            Text("Plays: \(nPlays)").foregroundColor(.black)
+            Text("Wins: \(nWins)").foregroundColor(.black)
+            //stats could go here
         }
         .padding()
         .background(Color.white)
@@ -48,5 +55,6 @@ struct EndGamePopup: View {
 }
 
 #Preview {
-    EndGamePopup(winOrLose: 2, wordToGuess: "APPLE", resetState: {})
+    EndGamePopup(winOrLose: 2, wordToGuess: "APPLE", resetState: {}
+                 ,lengthOfWord: 5, nPlays:3, nWins:2)
 }

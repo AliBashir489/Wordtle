@@ -7,13 +7,14 @@ struct GridView: View {
     @Binding var numRows: Int
     
     var body: some View {
-        VStack(spacing: CGFloat(15 - numCols)) {
+        VStack(spacing: CGFloat(15 - numRows)) {
             ForEach(0..<numRows, id: \.self) { row in
                 HStack(spacing: CGFloat(15 - numCols) ) {
                     ForEach(0..<numCols, id: \.self) { column in
                         Text(grid[row][column])
                             .frame(width: CGFloat(45 - numCols), height: CGFloat(45 - numRows))
                             .background(gridColors[row][column])
+                            .foregroundColor(.black)
                             .cornerRadius(10)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 10)
