@@ -241,6 +241,8 @@ struct GameView: View {
                     timer?.invalidate()
                     winOrLose = 2
                 }
+            } else { // if timer triggered and winOrLose>0, invalidate the timer
+                timer?.invalidate()
             }
         }
     }
